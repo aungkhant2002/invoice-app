@@ -1,0 +1,23 @@
+{
+  "name": "invoice-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.9"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "flowbite": "^2.5.2",
+    "invoice-app": "file:",
+    "sweetalert2": "^11.14.4"
+  }
+}
