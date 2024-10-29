@@ -9,12 +9,6 @@ export const createRecordFormHandler = (event) => {
     const currentProduct = products.find(({id}) => id == formData.get("product_select"));
     recordGroup.append(createRecordRow(currentProduct, formData.get("quantity")));
     createRecodeForm.reset();
-
-    const total = calculateRecordCostTotal();
-    const tax = calculateTax(total);
-    recordTotal.innerText = total;
-    recordTax.innerText = tax;
-    recordNetTotal.innerText = total + tax;
 }
 
 export const createRecordRow = ({id, name, price}, quantity) => {
@@ -50,16 +44,12 @@ export const removeRecord = (rowId) => {
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
+        confirmButtonColor: "rgb(37 99 235)",
         confirmButtonText: "Yes, delete it!"
     }).then((result) => {
         if (result.isConfirmed) {
             const currentRecordRow = document.querySelector(`[row-id='${rowId}']`);
             currentRecordRow.remove();
-            const total = calculateRecordCostTotal();
-            const tax = calculateTax(total);
-            recordTotal.innerText = total;
-            recordTax.innerText = tax;
-            recordNetTotal.innerText = total + tax;
         }
     });
 }
@@ -69,4 +59,22 @@ export const recordGroupHandler = (event) => {
         const currentRecordRow = event.target.closest(".record-row");
         removeRecord(currentRecordRow.getAttribute("row-id"));
     }
+}
+
+export const recordGroupObserver = () => {
+    const observerOptions = {
+        childList: true,
+        subtree: true,
+    };
+
+    const updateTotal = () => {
+        const total = calculateRecordCostTotal();
+        const tax = calculateTax(total);
+        recordTotal.innerText = total;
+        recordTax.innerText = tax;
+        recordNetTotal.innerText = total + tax;
+    }
+
+    const observer = new MutationObserver(updateTotal);
+    observer.observe(recordGroup, observerOptions);
 }

@@ -10,7 +10,7 @@
     <header class="mb-5">
         <div class="container mx-auto">
             <div class="py-4">
-                <h1 class="font-sans font-bold text-3xl">MMS Solutions</h1>
+                <h1 class="font-sans font-bold text-3xl">AK Solution</h1>
                 <p class="text-blue-700">Invoice App</p>
             </div>
         </div>
@@ -26,12 +26,12 @@
                             <option value="" selected>Choose a Product</option>
                         </select>
                     </div>
-                    <div class="col-span-1">
+                    <div class="lg:col-span-1 col-span-2">
                         <input type="number" id="quantity" name="quantity"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                placeholder="Quantity" required/>
                     </div>
-                    <div class="col-span-1">
+                    <div class="lg:col-span-1 col-span-4">
                         <button type="submit"
                                 class="w-full h-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                             Add
@@ -108,7 +108,7 @@
         </div>
     </section>
     <section id="productSideBar"
-             class="z-30 fixed right-0 w-[400px] h-screen bg-white shadow translate-x-full duration-300">
+             class="z-30 fixed right-0 w-[350px] text-nowrap bg-gray-50 h-screen shadow translate-x-full duration-300 lg:w-[400px]">
         <div class="p-4">
             <div class="flex justify-between items-center mb-5">
                 <div class="">
@@ -124,9 +124,9 @@
                 </button>
             </div>
             <div class="flex flex-col gap-3 mb-5" id="productGroup"></div>
-            <div class="p-5 bg-gray-50 shadow rounded-lg">
+            <div class="lg:p-5 p-3 bg-white shadow rounded-lg">
                 <form action="" id="createProductForm">
-                    <div class="grid grid-cols-3 grid-rows-2 gap-5">
+                    <div class="grid grid-cols-3 grid-rows-2 lg:gap-5 gap-3">
                         <div class="col-span-3">
                             <input type="text" id="newProductName" name="new_product_name"
                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -165,7 +165,7 @@
         </div>
     </footer>
     <template id="productCardTemplate">
-        <div class="border rounded-lg flex justify-between p-3 product-card">
+        <div class="border bg-white rounded-lg flex justify-between p-3 product-card">
             <h3 class="product-name"></h3>
             <p><span class="product-price"></span> mmk</p>
         </div>

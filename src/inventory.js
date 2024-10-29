@@ -7,7 +7,9 @@ export const addNewProductBtnHandler = () => {
     productGroup.append(createProductCard(createId, newProductName.value, newProductPrice.valueAsNumber));
     productSelect.append(new Option(`${newProductName.value} - ${newProductPrice.valueAsNumber}`, createId));
     products.push({
-        id: createId, name: newProductName.value, price: newProductPrice.valueAsNumber
+        id: createId,
+        name: newProductName.value,
+        price: newProductPrice.valueAsNumber,
     })
 
     newProductName.value = null;
@@ -26,6 +28,7 @@ export const createProductCard = (id, name, price) => {
     const productName = productCard.querySelector(".product-name");
     const productPrice = productCard.querySelector(".product-price");
     const currentProductCard = productCard.querySelector(".product-card");
+    currentProductCard.classList.add("animate__animated", "animate__zoomIn");
     currentProductCard.id = id;
     productName.innerText = name;
     productPrice.innerText = price;
