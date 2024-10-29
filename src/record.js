@@ -1,5 +1,7 @@
+import {v4 as uuidv4} from 'uuid';
 import {createRecodeForm, recordGroup, recordNetTotal, recordRowTemplate, recordTax, recordTotal} from "./selectors.js";
 import {products} from "./states.js";
+import Swal from "sweetalert2";
 
 export const createRecordFormHandler = (event) => {
     event.preventDefault();
@@ -24,6 +26,8 @@ export const createRecordRow = ({id, name, price}, quantity) => {
     const currentRecordRow = recordRow.querySelector(".record-row");
 
     currentRecordRow.setAttribute("product-id", id);
+    currentRecordRow.setAttribute("row-id", uuidv4());
+
     recordProductName.innerText = name;
     recordProductPrice.innerText = price;
     recordQuantity.innerText = quantity;
@@ -39,3 +43,30 @@ export const calculateRecordCostTotal = () => {
 }
 
 export const calculateTax = (amount, percentage = 5) => (amount / 100) * percentage;
+
+export const removeRecord = (rowId) => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const currentRecordRow = document.querySelector(`[row-id='${rowId}']`);
+            currentRecordRow.remove();
+            const total = calculateRecordCostTotal();
+            const tax = calculateTax(total);
+            recordTotal.innerText = total;
+            recordTax.innerText = tax;
+            recordNetTotal.innerText = total + tax;
+        }
+    });
+}
+
+export const recordGroupHandler = (event) => {
+    if (event.target.classList.contains("record-remove")) {
+        const currentRecordRow = event.target.closest(".record-row");
+        removeRecord(currentRecordRow.getAttribute("row-id"));
+    }
+}
