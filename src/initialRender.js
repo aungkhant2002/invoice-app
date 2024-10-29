@@ -1,8 +1,9 @@
 import {productSideBar} from "./selectors.js";
+import {productRender} from "./inventory.js";
+import {products} from "./states.js";
 
 const initialRender = () => {
-    // open sidebar
-    productSideBar.classList.remove("translate-x-full");
+    productRender(products);
 }
 
 export default initialRender;
