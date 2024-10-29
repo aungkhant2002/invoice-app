@@ -22,13 +22,9 @@
         <form action="">
           <div class="grid grid-cols-4 gap-3 bg-gray-50 p-5 rounded-lg shadow-md">
             <div class="col-span-2">
-              <select id="countries"
+              <select id="productSelect"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Select a Product</option>
-                <option value="US">Apple</option>
-                <option value="CA">Orange</option>
-                <option value="FR">Mango</option>
-                <option value="DE">Banana</option>
+                <option selected>Choose a Product</option>
               </select>
             </div>
             <div class="col-span-1">
@@ -67,60 +63,6 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  Apple
-                </th>
-                <td class="px-6 py-4 text-end">
-                  500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  3
-                </td>
-                <td class="px-6 py-4 text-end">
-                  1500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove</a>
-                </td>
-              </tr>
-              <tr
-                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  Apple
-                </th>
-                <td class="px-6 py-4 text-end">
-                  500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  3
-                </td>
-                <td class="px-6 py-4 text-end">
-                  1500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove</a>
-                </td>
-              </tr>
-              <tr
-                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  Apple
-                </th>
-                <td class="px-6 py-4 text-end">
-                  500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  3
-                </td>
-                <td class="px-6 py-4 text-end">
-                  1500
-                </td>
-                <td class="px-6 py-4 text-end">
-                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove</a>
-                </td>
-              </tr>
               <tr
                 class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -180,7 +122,7 @@
       <div class="p-4">
         <div class="flex justify-between items-center mb-5">
           <div class="">
-            <h1 class="font-sans font-bold text-3xl">MMS Inventory</h1>
+            <h1 class="font-sans font-bold text-3xl">Manage Inventory</h1>
             <p class="text-blue-700">Available Items</p>
           </div>
           <button class="hover:scale-90 hover:bg-gray-50 active:scale-75 px-4 py-2 duration-200" id="closeSideBarBtn">
@@ -189,42 +131,34 @@
             </svg>
           </button>
         </div>
-        <div class="flex flex-col gap-3 mb-5">
-          <div class="border rounded-lg flex justify-between p-3">
-            <h3>Apple</h3>
-            <p>500 mmk</p>
-          </div>
-          <div class="border rounded-lg flex justify-between p-3">
-            <h3>Apple</h3>
-            <p>500 mmk</p>
-          </div>
-          <div class="border rounded-lg flex justify-between p-3">
-            <h3>Apple</h3>
-            <p>500 mmk</p>
-          </div>
-          <div class="border rounded-lg flex justify-between p-3">
-            <h3>Apple</h3>
-            <p>500 mmk</p>
-          </div>
+        <div class="flex flex-col gap-3 mb-5" id="productGroup">
+          <template id="productCardTemplate">
+            <div class="border rounded-lg flex justify-between p-3 product-card">
+              <h3 class="product-name"></h3>
+              <p class="product-price"></p>
+            </div>
+          </template>
         </div>
-        <div class="p-3 bg-gray-50 shadow rounded-lg">
-          <div class="grid grid-cols-3 grid-rows-2 gap-3">
-            <div class="col-span-3">
-              <input type="text" id=""
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="New Item Name" required />
+        <div class="p-5 bg-gray-50 shadow rounded-lg">
+          <form action="" id="createProductForm">
+            <div class="grid grid-cols-3 grid-rows-2 gap-5">
+              <div class="col-span-3">
+                <input type="text" id="newProductName" name="new_product_name"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="New Item Name" required />
+              </div>
+              <div class="col-span-2">
+                <input type="number" id="newProductPrice" name="new_product_price"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="New Item Price" required />
+              </div>
+              <div class="col-span-1">
+                <button type="button" id="addNewProductBtn"
+                        class="w-full h-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
+                  Item</button>
+              </div>
             </div>
-            <div class="col-span-2">
-              <input type="number" id=""
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="New Item Price" required />
-            </div>
-            <div class="col-span-1">
-              <button type="button"
-                class="w-full h-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
-                Item</button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>

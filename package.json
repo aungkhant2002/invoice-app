@@ -18,6 +18,7 @@
     "animate.css": "^4.1.1",
     "flowbite": "^2.5.2",
     "invoice-app": "file:",
-    "sweetalert2": "^11.14.4"
+    "sweetalert2": "^11.14.4",
+    "uuid": "^11.0.2"
   }
 }

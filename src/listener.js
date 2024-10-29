@@ -1,5 +1,6 @@
-import {closeSideBarBtn, manageInventoryBtn} from "./selectors.js";
+import {addNewProductBtn, closeSideBarBtn, manageInventoryBtn} from "./selectors.js";
 import {closeSideBarBtnHandler, manageInventoryBtnHandler} from "./handlers.js";
+import {addNewProductBtnHandler} from "./inventory.js";
 
 const listener = () => {
     manageInventoryBtn.addEventListener('click', () => {
@@ -7,6 +8,9 @@ const listener = () => {
     })
     closeSideBarBtn.addEventListener('click', () => {
         closeSideBarBtnHandler();
+    })
+    addNewProductBtn.addEventListener('click', () => {
+        addNewProductBtnHandler();
     })
 }
 

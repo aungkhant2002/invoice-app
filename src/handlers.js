@@ -7,5 +7,4 @@ export const manageInventoryBtnHandler = () => {
 
 export const closeSideBarBtnHandler = () => {
     productSideBar.classList.add('translate-x-full', 'duration-300');
-
 }
