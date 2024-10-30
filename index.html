@@ -16,7 +16,7 @@
         </div>
     </header>
     <section class="mb-5">
-        <div class="container mx-auto mb-5">
+        <div class="container mx-auto mb-5 block print:hidden">
             <form action="" id="createRecordForm">
                 <div class="grid grid-cols-4 gap-3 bg-gray-50 p-5 rounded-lg shadow-md">
                     <div class="col-span-2">
@@ -58,7 +58,7 @@
                         <th scope="col" class="px-6 py-3 text-end">
                             Cost
                         </th>
-                        <th scope="col" class="px-6 py-3 text-end">
+                        <th scope="col" class="px-6 py-3 text-end table-cell print:hidden">
                             Action
                         </th>
                     </tr>
@@ -80,7 +80,7 @@
                         <td class="px-6 py-4 text-end" id="recordTotal">
                             0
                         </td>
-                        <td class="px-6 py-4 text-end"></td>
+                        <td class="px-6 py-4 text-end table-cell print:hidden"></td>
                     </tr>
                     <tr class="border-b dark:border-gray-700">
                         <th colspan="3" scope="row"
@@ -90,7 +90,7 @@
                         <td class="px-6 py-4 text-end" id="recordTax">
                             0
                         </td>
-                        <td class="px-6 py-4 text-end"></td>
+                        <td class="px-6 py-4 text-end table-cell print:hidden"></td>
                     </tr>
                     <tr class="border-b dark:border-gray-700">
                         <th colspan="3" scope="row"
@@ -105,6 +105,7 @@
                     </tfoot>
                 </table>
             </div>
+        <p class="hidden print:block mt-5">ဝယ်ယူအားပေးမှူအတွက် ကျေးဇူးတင်ပါသည်။</p>
         </div>
     </section>
     <section id="productSideBar"
@@ -151,13 +152,13 @@
     </section>
     <footer class="mt-auto">
         <div class="container mx-auto">
-            <div class="flex justify-end gap-3 py-2">
+            <div class="flex justify-end gap-3 py-2 print:hidden">
                 <button type="button" id="manageInventoryBtn"
                         class="py-2 px-3 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                     Manage
                     Inventory
                 </button>
-                <button type="button"
+                <button type="button" id="print"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                     Print
                 </button>
@@ -181,22 +182,26 @@
             </td>
             <td class="px-6 py-4 text-end text-nowrap">
                 <button class="quantity-sub hidden group-hover:inline-block active:scale-90 border border-blue-500 text-blue-500 p-1 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 pointer-events-none">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="size-3 pointer-events-none">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14"/>
                     </svg>
                 </button>
                 <span class="record-quantity inline-block w-5">0</span>
                 <button class="quantity-add hidden group-hover:inline-block active:scale-90 border border-blue-500 text-blue-500 p-1 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 pointer-events-none">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="size-3 pointer-events-none">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
                     </svg>
                 </button>
             </td>
             <td class="record-cost px-6 py-4 text-end">
                 1500
             </td>
-            <td class="px-6 py-4 text-end">
-                <button class="record-remove font-medium text-blue-600 dark:text-blue-500 bg-gray-50 px-4 py-2 rounded active:scale-90 duration-200">Remove</button>
+            <td class="px-6 py-4 text-end table-cell print:hidden">
+                <button class="record-remove font-medium text-blue-600 dark:text-blue-500 bg-gray-50 px-4 py-2 rounded active:scale-90 duration-200">
+                    Remove
+                </button>
             </td>
         </tr>
     </template>

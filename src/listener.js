@@ -1,5 +1,12 @@
-import {addNewProductBtn, closeSideBarBtn, createRecodeForm, manageInventoryBtn, recordGroup} from "./selectors.js";
-import {closeSideBarBtnHandler, manageInventoryBtnHandler} from "./handlers.js";
+import {
+    addNewProductBtn,
+    closeSideBarBtn,
+    createRecodeForm,
+    manageInventoryBtn,
+    print,
+    recordGroup
+} from "./selectors.js";
+import {closeSideBarBtnHandler, manageInventoryBtnHandler, printHandler} from "./handlers.js";
 import {addNewProductBtnHandler} from "./inventory.js";
 import {createRecordFormHandler, recordGroupHandler} from "./record.js";
 
@@ -9,6 +16,7 @@ const listener = () => {
     addNewProductBtn.addEventListener('click', addNewProductBtnHandler);
     createRecodeForm.addEventListener('submit', createRecordFormHandler);
     recordGroup.addEventListener('click', recordGroupHandler);
+    print.addEventListener('click', printHandler);
 }
 
 export default listener;
