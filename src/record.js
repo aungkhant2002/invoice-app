@@ -7,7 +7,24 @@ export const createRecordFormHandler = (event) => {
     event.preventDefault();
     const formData = new FormData(createRecodeForm);
     const currentProduct = products.find(({id}) => id == formData.get("product_select"));
-    recordGroup.append(createRecordRow(currentProduct, formData.get("quantity")));
+
+    const isExistedRecord = document.querySelector(`[product-id='${currentProduct.id}']`);
+    if (isExistedRecord == null) {
+        recordGroup.append(createRecordRow(currentProduct, formData.get("quantity")));
+    } else {
+        Swal.fire({
+            title: `Are you sure to add ${currentProduct.name}?`,
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "rgb(37 99 235)",
+            confirmButtonText: "Yes, add it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                updateRecordQuantity(isExistedRecord.getAttribute("row-id"), parseInt(formData.get("quantity")));
+            }
+        });
+    }
     createRecodeForm.reset();
 }
 
