@@ -54,17 +54,34 @@ export const removeRecord = (rowId) => {
     });
 }
 
+export const updateRecordQuantity = (rowId, newQuantity) => {
+    const currentRecordRow = document.querySelector(`[row-id='${rowId}']`);
+    const recordProductPrice = currentRecordRow.querySelector(".record-product-price");
+    const recordQuantity = currentRecordRow.querySelector(".record-quantity");
+    const recordCost = currentRecordRow.querySelector(".record-cost");
+
+    if (newQuantity > 0 || recordQuantity.innerText > 1) {
+        recordQuantity.innerText = parseInt(recordQuantity.innerText) + newQuantity;
+        recordCost.innerText = recordProductPrice.innerText * recordQuantity.innerText;
+    }
+}
+
 export const recordGroupHandler = (event) => {
     if (event.target.classList.contains("record-remove")) {
         const currentRecordRow = event.target.closest(".record-row");
         removeRecord(currentRecordRow.getAttribute("row-id"));
+    } else if (event.target.classList.contains("quantity-add")) {
+        const currentRecordRow = event.target.closest(".record-row");
+        updateRecordQuantity(currentRecordRow.getAttribute("row-id"), 1);
+    } else if (event.target.classList.contains("quantity-sub")) {
+        const currentRecordRow = event.target.closest(".record-row");
+        updateRecordQuantity(currentRecordRow.getAttribute("row-id"), -1);
     }
 }
 
 export const recordGroupObserver = () => {
     const observerOptions = {
-        childList: true,
-        subtree: true,
+        childList: true, subtree: true,
     };
 
     const updateTotal = () => {
